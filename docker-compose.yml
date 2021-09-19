@@ -1,0 +1,21 @@
+version: "3.7"
+services:
+  app:
+    build: .
+    restart: always
+    ports:
+      - 8080:80
+    volumes:
+      - ./basic/:/var/www/html
+    environment:
+      MYSQL_HOST: db
+
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_DATABASE: test
+      MYSQL_USER: cfabrica46
+      MYSQL_PASSWORD: ABcd_1234
+      MYSQL_ROOT_PASSWORD: ABcd_1234
